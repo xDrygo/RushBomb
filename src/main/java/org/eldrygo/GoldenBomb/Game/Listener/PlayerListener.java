@@ -22,11 +22,58 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        plugin.getLogger().info("[DEBUG] PlayerJoinEvent: " + player.getName() + " se ha conectado.");
+
+        if (gameManager.getCurrentState() != GameManager.GameState.STOPPED) {
+            plugin.getLogger().info("[DEBUG] El estado actual del juego no es STOPPED: " + gameManager.getCurrentState());
+            return;
+        }
+
+        if (!bombManager.getPlayersWithBomb().contains(player)) {
+            plugin.getLogger().info("[DEBUG] El jugador " + player.getName() + " no tiene la bomba al unirse.");
+            return;
+        }
+
+        plugin.getLogger().info("[DEBUG] El jugador " + player.getName() + " tenía la bomba. Se procede a quitársela.");
+        bombManager.takeBomb(player);
+    }
+
+    @EventHandler
+    public void stealBomb(EntityDamageByEntityEvent event) {
+        if (!(event.getEntity() instanceof Player victim)) return;
+        if (!(event.getDamager() instanceof Player damager)) return;
+
+        plugin.getLogger().info("[DEBUG] EntityDamageByEntityEvent: " + damager.getName() + " golpeó a " + victim.getName());
+
+        if (gameManager.getCurrentState() != GameManager.GameState.RUNNING) {
+            plugin.getLogger().info("[DEBUG] El estado actual del juego no es RUNNING: " + gameManager.getCurrentState());
+            return;
+        }
+
+        if (!bombManager.getPlayersWithBomb().contains(victim)) {
+            plugin.getLogger().info("[DEBUG] La víctima " + victim.getName() + " no tiene la bomba.");
+            return;
+        }
+
+        if (bombManager.getPlayersWithBomb().contains(damager)) {
+            plugin.getLogger().info("[DEBUG] El agresor " + damager.getName() + " ya tiene una bomba.");
+            return;
+        }
+
+        plugin.getLogger().info("[DEBUG] Robo de bomba: " + damager.getName() + " roba la bomba de " + victim.getName());
+
+        bombManager.takeBomb(victim);
+        bombManager.addBomb(damager);
+
+        plugin.getLogger().warning("El jugador " + damager.getName() + " robó la Golden Bomb de " + victim.getName() + "!");
+    }
+    /*
+    @EventHandler
     public void onPlayerJoin (PlayerJoinEvent event) {
         Player player = event.getPlayer();
         if (gameManager.getCurrentState() != GameManager.GameState.STOPPED) return;
-        if (!bombManager.getBombTeam().getEntries().contains(String.valueOf(player.getUniqueId()))) return;
-
         if (!bombManager.getPlayersWithBomb().contains(player)) return;
 
         bombManager.takeBomb(player);
@@ -47,4 +94,5 @@ public class PlayerListener implements Listener {
 
         plugin.getLogger().warning("El jugador " + damager.getName() + " robó la Golden Bomb de " + victim.getName() + "!");
     }
+     */
 }
