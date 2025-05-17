@@ -16,9 +16,13 @@ public class GoldenBombTabCompleter implements TabCompleter {
         if (args.length == 1) {
             completions.add("start");
             completions.add("stop");
+            completions.add("givebombs");
             completions.add("status");
             completions.add("reload");
             completions.add("help");
+        }
+        if (args.length == 2) {
+            completions.add("number");
         }
         return completions;
     }
