@@ -1,0 +1,28 @@
+prefix: "#ffc34d&lGolden&r&lBomb &8»&r"
+command:
+  start:
+    already: "%prefix% #FF0000🚫 The GoldenBomb game is already running."
+    success: "%prefix% #a0ff72✔ Successfully started the GoldenBomb game."
+  stop:
+    already: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
+    success: "%prefix% #ff7272❌ Successfully stopped the GoldenBomb game."
+  status:
+    success: "%prefix% #fff18d📰 The GoldenBomb game is &l%status%"
+  reload:
+    error: "%prefix% #FF0000🚫 Error reloading the plugin."
+    success: "%prefix% #a0ff72✔ Plugin reloaded."
+  help:
+    - ""
+    - "&f&lɢᴏʟᴅᴇɴ ʙᴏᴍʙ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+    - ""
+    - "#fff18d/gb start"
+    - "#fff18d/gb stop"
+    - "#fff18d/gb reload"
+    - "#fff18d/gb status"
+    - "#fff18d/gb help"
+    - ""
+  usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/gb help &7to get the command list."
+error:
+  no_permission: "%prefix% #FF0000🚫 You don't have permission to use this command."
+
+# #FF0000🚫 #ff7272❌ #fff18d📰 #a0ff72✔
