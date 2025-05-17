@@ -1,4 +1,4 @@
-prefix: "#ffc34d&lGolden&r&lBomb &8»&r"
+prefix: "#ffc34d&lG&r&lBomb &8»&r"
 command:
   start:
     already: "%prefix% #FF0000🚫 The GoldenBomb game is already running."
@@ -6,6 +6,12 @@ command:
   stop:
     already: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
     success: "%prefix% #ff7272❌ Successfully stopped the GoldenBomb game."
+  givebombs:
+    game_stopped: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
+    no_args: "%prefix% #FF0000🚫 No value specified."
+    invalid_int: "%prefix% #FF0000🚫 Invalid value."
+    int_is_more_than_players: "%prefix% #FF0000🚫 Value is bigger than online players."
+    success: "%prefix% #a0ff72✔ Successfully gived GoldenBomb to %int% players."
   status:
     success: "%prefix% #fff18d📰 The GoldenBomb game is &l%status%"
   reload:
