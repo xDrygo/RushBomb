@@ -5,6 +5,7 @@ import org.bukkit.scoreboard.Team;
 import org.eldrygo.GoldenBomb.GoldenBomb;
 
 public class OtherUtils {
+
     private static GoldenBomb plugin;
 
     public OtherUtils(GoldenBomb plugin) {
@@ -13,8 +14,19 @@ public class OtherUtils {
 
     public static Team getBombTeam() {
         String teamName = plugin.getConfig().getString("settings.bomb_team");
-        assert teamName != null;
-        return Bukkit.getScoreboardManager().getMainScoreboard().getTeam(teamName);
+
+        if (teamName == null) {
+            teamName = "GoldenBomb";
+        }
+
+        Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(teamName);
+
+        if (team == null) {
+            Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(teamName);
+            team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(teamName);
+        }
+
+        return team;
     }
 
     public static boolean validInt(String value) {
@@ -24,5 +36,8 @@ public class OtherUtils {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    public static void setPlugin(GoldenBomb plugin) {
+        OtherUtils.plugin = plugin;
     }
 }
