@@ -1,6 +1,7 @@
 package org.eldrygo.GoldenBomb;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
 import org.eldrygo.GoldenBomb.Managers.ConfigManager;
 import org.eldrygo.GoldenBomb.Utils.ChatUtils;
@@ -22,7 +23,8 @@ public class GoldenBomb extends JavaPlugin {
 
         ConfigManager configManager = new ConfigManager(this);
         ChatUtils chatUtils = new ChatUtils(configManager, this);
-        LoadUtils loadUtils = new LoadUtils(this, chatUtils, configManager, gameManager);
+        BombManager bombManager = new BombManager(this);
+        LoadUtils loadUtils = new LoadUtils(this, chatUtils, configManager, gameManager, bombManager);
 
         loadUtils.loadFeatures();
 
