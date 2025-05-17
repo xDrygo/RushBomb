@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Utils.OtherUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -42,7 +41,7 @@ public class BombManager {
         for (String entry : new HashSet<>(bombTeam.getEntries())) {
             bombTeam.removeEntry(entry);
             Objects.requireNonNull(
-                    Bukkit.getEntity(UUID.fromString(entry))).setGlowing(false);
+                    Bukkit.getEntity(Bukkit.getPlayer(entry).getUniqueId())).setGlowing(false);
         }
     }
 
