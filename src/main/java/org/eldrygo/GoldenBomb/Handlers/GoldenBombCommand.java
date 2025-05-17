@@ -99,6 +99,10 @@ public class GoldenBombCommand implements CommandExecutor {
                 bombManager.giveRandomBombs(playersInt);
                 sender.sendMessage(chatUtils.getMessage("command.givebombs.success", null).replace("%int%", playersIntStr));
             }
+            case "resetall" -> {
+                gameManager.resetAll();
+                sender.sendMessage(chatUtils.getMessage("command.resetall.success", null));
+            }
             case "help" -> {
                 List<String> helpMessage = configManager.getMessageConfig().getStringList("command.help");
 

@@ -12,6 +12,8 @@ command:
     invalid_int: "%prefix% #FF0000🚫 Invalid value."
     int_is_more_than_players: "%prefix% #FF0000🚫 Value is bigger than online players."
     success: "%prefix% #a0ff72✔ Successfully gived GoldenBomb to %int% players."
+  resetall:
+    success: "%prefix% #a0ff72✔ Successfully reset all GoldenBomb game."
   status:
     success: "%prefix% #fff18d📰 The GoldenBomb game is &l%status%"
   reload:
