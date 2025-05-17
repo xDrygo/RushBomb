@@ -1,5 +1,8 @@
 package org.eldrygo.GoldenBomb.Utils;
 
+import org.bukkit.Bukkit;
+import org.eldrygo.GoldenBomb.Game.Listener.PlayerListener;
+import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
 import org.eldrygo.GoldenBomb.GoldenBomb;
 import org.eldrygo.GoldenBomb.Handlers.GoldenBombCommand;
@@ -11,17 +14,22 @@ public class LoadUtils {
     private final ChatUtils chatUtils;
     private final ConfigManager configManager;
     private final GameManager gameManager;
+    private final BombManager bombManager;
 
-    public LoadUtils(GoldenBomb plugin, ChatUtils chatUtils, ConfigManager configManager, GameManager gameManager) {
+    public LoadUtils(GoldenBomb plugin, ChatUtils chatUtils, ConfigManager configManager, GameManager gameManager, BombManager bombManager) {
         this.plugin = plugin;
         this.chatUtils = chatUtils;
         this.configManager = configManager;
         this.gameManager = gameManager;
+        this.bombManager = bombManager;
     }
 
     public void loadFeatures() {
         loadConfigFiles();
         registerCommand();
+        registerListeners();
+
+        bombManager.setBombTeam(OtherUtils.getBombTeam());
     }
 
     public void loadConfigFiles() {
@@ -33,9 +41,13 @@ public class LoadUtils {
         if (plugin.getCommand("goldenbomb") == null) {
             plugin.getLogger().severe("❌ Error: /goldenbomb command is not registered in plugin.yml");
         } else {
-            plugin.getCommand("goldenbomb").setExecutor(new GoldenBombCommand(chatUtils, configManager, gameManager, this));
+            plugin.getCommand("goldenbomb").setExecutor(new GoldenBombCommand(chatUtils, configManager, gameManager, this, bombManager));
             plugin.getCommand("goldenbomb").setTabCompleter(new GoldenBombTabCompleter());
             plugin.getLogger().info("✅ /goldenbomb command was successfully loaded.");
         }
+    }
+
+    private void registerListeners() {
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerListener(gameManager, bombManager, plugin), plugin);
     }
 }
