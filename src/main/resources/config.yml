@@ -1,2 +1,11 @@
 settings:
-  bomb_team: "bombTeam"
+  team: "bombTeam"
+  item:
+    name: "#ffc34d&lBomba Dorada"
+    lore:
+      - "#ffe2a8Manten contigo esta bomba hasta"
+      - "#ffe2a8que se acabe el tiempo, recuerda"
+      - "#ffe2a8que si otro jugador te golpea,"
+      - "#ffe2a8te la puede robar."
+    custom_model_data: 101
+  game_duration: 60 #In seconds
