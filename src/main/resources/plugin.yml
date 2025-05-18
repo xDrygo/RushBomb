@@ -1,0 +1,9 @@
+name: PacTNTMan
+main: org.eldrygo.PacTNTMan.PacTNTMan
+version: 0.0.01
+api-version: 1.20
+authors:
+  - Drygo
+  - Turtle Club
+softdepend:
+  - xBossBar
