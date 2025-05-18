@@ -3,16 +3,16 @@ package org.eldrygo.GoldenBomb.API;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimeManager;
+import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimerManager;
 import org.jetbrains.annotations.NotNull;
 
 public class GoldenBombExpansion extends PlaceholderExpansion {
     private final GoldenBomb plugin;
-    private final TimeManager timeManager;
+    private final TimerManager timerManager;
 
-    public GoldenBombExpansion(GoldenBomb plugin, TimeManager timeManager) {
+    public GoldenBombExpansion(GoldenBomb plugin, TimerManager timeManager) {
         this.plugin = plugin;
-        this.timeManager = timeManager;
+        this.timerManager = timeManager;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class GoldenBombExpansion extends PlaceholderExpansion {
     @Override
     public String onRequest(OfflinePlayer player, String params) {
         if (params.equals("timer")) {
-            return timeManager.getFormattedTime("game");
+            return timerManager.getFormattedTime("game");
         }
         return null;
     }

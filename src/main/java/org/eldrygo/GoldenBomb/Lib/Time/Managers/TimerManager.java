@@ -1,19 +1,23 @@
 package org.eldrygo.GoldenBomb.Lib.Time.Managers;
 
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
+import org.eldrygo.GoldenBomb.GoldenBomb;
 import org.eldrygo.GoldenBomb.Lib.Time.Events.TimerEndEvent;
 import org.eldrygo.GoldenBomb.Lib.Time.Model.Time;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TimeManager {
+public class TimerManager {
     private final Map<String, Time> timers = new HashMap<>();
-    private final Plugin plugin;
+    private final GoldenBomb plugin;
 
-    public TimeManager(Plugin plugin) {
+    private GameManager gameManager;
+
+    public TimerManager(GoldenBomb plugin, GameManager gameManager) {
         this.plugin = plugin;
+        this.gameManager = gameManager;
     }
 
     public void createTimer(String id, long durationInSeconds) {
@@ -65,15 +69,20 @@ public class TimeManager {
             String id = entry.getKey();
             Time time = entry.getValue();
 
-            if (time.getRemainingTime() <= 0) {
-                // Lanza el evento cuando termina el timer
-                Bukkit.getScheduler().runTask(plugin, () -> {
-                    Bukkit.getPluginManager().callEvent(new TimerEndEvent(id));
-                });
+            if (gameManager.getCurrentState() != GameManager.GameState.RUNNING) return false;
+            if (!time.isRunning()) return false;
 
-                return true; // Remueve el timer
+            if (time.getRemainingTime() <= 0) {
+                time.stop();
+                Bukkit.getScheduler().runTask(plugin, () ->
+                        Bukkit.getPluginManager().callEvent(new TimerEndEvent(id)));
+                return true;
             }
+
             return false;
         });
+    }
+    public void setGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 }

@@ -5,26 +5,25 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.entity.Player;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimeManager;
+import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimerManager;
 import org.eldrygo.GoldenBomb.Plugin.Managers.ConfigManager;
 import org.eldrygo.XBossBar.API.XBossBarAPI;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameManager {
     private final BombManager bombManager;
     private final RunnableManager runnableManager;
-    private final TimeManager timeManager;
+    private final TimerManager timerManager;
     private final GoldenBomb plugin;
     private final ConfigManager configManager;
+    private final HUDManager hudManager;
 
-    public GameManager(BombManager bombManager, RunnableManager runnableManager, TimeManager timeManager, GoldenBomb plugin, ConfigManager configManager) {
+    public GameManager(BombManager bombManager, RunnableManager runnableManager, TimerManager timerManager, GoldenBomb plugin, ConfigManager configManager, HUDManager hudManager) {
         this.bombManager = bombManager;
         this.runnableManager = runnableManager;
-        this.timeManager = timeManager;
+        this.timerManager = timerManager;
         this.plugin = plugin;
         this.configManager = configManager;
+        this.hudManager = hudManager;
     }
 
     public enum GameState {
@@ -39,11 +38,14 @@ public class GameManager {
         runnableManager.startTask();
 
         int gameDuration = plugin.getConfig().getInt("settings.game_duration");
-        timeManager.createTimer("game", gameDuration);
+        timerManager.createTimer("game", gameDuration);
 
         String bossbar = configManager.getMessageConfig().getString("bossbar.game");
+        XBossBarAPI.createBossBar("void", " ", BarColor.YELLOW, BarStyle.SOLID, false);
         XBossBarAPI.createBossBar("goldenbomb", bossbar, BarColor.YELLOW, BarStyle.SOLID, false);
+        hudManager.startHUDTask();
         for (Player p : Bukkit.getOnlinePlayers()) {
+            XBossBarAPI.addPlayerToBossBar("void", p);
             XBossBarAPI.addPlayerToBossBar("goldenbomb", p);
         }
     }
@@ -52,9 +54,12 @@ public class GameManager {
         currentState = GameState.STOPPED;
         runnableManager.stopTask();
         killLosers();
-        timeManager.stopTimer("game");
+        timerManager.stopTimer("game");
+        timerManager.removeTimer("game");
         XBossBarAPI.removeBossBar("goldenbomb");
+        XBossBarAPI.removeBossBar("void");
         bombManager.resetBombs();
+        hudManager.stopHUDTask();
     }
 
     public GameState getCurrentState() {
@@ -68,7 +73,7 @@ public class GameManager {
 
     public void killLosers() {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (!bombManager.getPlayersWithBomb().contains(p)) {
+            if (!bombManager.getPlayersWithBomb().contains(p) && !p.isOp()) {
                 p.damage(100000.0);
             }
         }

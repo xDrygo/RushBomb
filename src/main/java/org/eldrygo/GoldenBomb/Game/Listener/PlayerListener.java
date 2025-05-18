@@ -16,12 +16,10 @@ public class PlayerListener implements Listener {
 
     private final GameManager gameManager;
     private final BombManager bombManager;
-    private final GoldenBomb plugin;
 
-    public PlayerListener(GameManager gameManager, BombManager bombManager, GoldenBomb plugin) {
+    public PlayerListener(GameManager gameManager, BombManager bombManager) {
         this.gameManager = gameManager;
         this.bombManager = bombManager;
-        this.plugin = plugin;
     }
 
     @EventHandler
@@ -47,8 +45,6 @@ public class PlayerListener implements Listener {
 
         bombManager.takeBomb(victim);
         bombManager.addBomb(damager);
-
-        plugin.getLogger().warning("El jugador " + damager.getName() + " robó la Golden Bomb de " + victim.getName() + "!");
     }
 
     @EventHandler
@@ -57,20 +53,17 @@ public class PlayerListener implements Listener {
         if (player.isOp()) return;
 
         if (gameManager.getCurrentState() != GameManager.GameState.RUNNING) {
-            plugin.getLogger().info("[DEBUG] El estado actual del juego no es RUNNING: " + gameManager.getCurrentState());
             return;
         }
 
         // Slot 39 es la cabeza
         if (event.getSlot() == 39) {
             event.setCancelled(true);
-            plugin.getLogger().info("[DEBUG] " + player.getName() + " intentó quitarse el casco con click.");
         }
 
         // Protección adicional por tipo de slot (ARMOR) y raw slot
         if (event.getSlotType() == InventoryType.SlotType.ARMOR && event.getRawSlot() == 5) {
             event.setCancelled(true);
-            plugin.getLogger().info("[DEBUG] " + player.getName() + " intentó modificar el slot de la cabeza.");
         }
     }
 
@@ -80,13 +73,11 @@ public class PlayerListener implements Listener {
         if (player.isOp()) return;
 
         if (gameManager.getCurrentState() != GameManager.GameState.RUNNING) {
-            plugin.getLogger().info("[DEBUG] El estado actual del juego no es RUNNING: " + gameManager.getCurrentState());
             return;
         }
 
         if (event.getRawSlots().contains(39)) {
             event.setCancelled(true);
-            plugin.getLogger().info("[DEBUG] " + player.getName() + " intentó arrastrar un ítem al slot de la cabeza.");
         }
     }
 }

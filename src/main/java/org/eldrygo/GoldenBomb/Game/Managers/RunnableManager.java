@@ -57,8 +57,6 @@ public class RunnableManager {
                 if (bombsManager.getBombTeam().getEntries().contains(p.getName())) {
                     bombsManager.getBombTeam().removeEntity(p);
                 }
-
-                // COMPROBACION DEL ITEM DE LA BOMBA.
             }
         }
     }

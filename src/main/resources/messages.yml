@@ -41,6 +41,9 @@ command:
   usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/gb help &7to get the command list."
 bossbar:
   game: "%goldenbomb_timer%"
+actionbar:
+  with_bomb: "ओ"
+  without_bomb: "औ"
 error:
   no_permission: "%prefix% #FF0000🚫 You don't have permission to use this command."
 

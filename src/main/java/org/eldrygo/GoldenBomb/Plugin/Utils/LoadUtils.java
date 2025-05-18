@@ -7,7 +7,7 @@ import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
 import org.eldrygo.GoldenBomb.GoldenBomb;
 import org.eldrygo.GoldenBomb.Lib.Time.Listeners.TimerListener;
-import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimeManager;
+import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimerManager;
 import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombCommand;
 import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombTabCompleter;
 import org.eldrygo.GoldenBomb.Plugin.Managers.ConfigManager;
@@ -18,15 +18,15 @@ public class LoadUtils {
     private final ConfigManager configManager;
     private final GameManager gameManager;
     private final BombManager bombManager;
-    private final TimeManager timeManager;
+    private final TimerManager timerManager;
 
-    public LoadUtils(GoldenBomb plugin, ChatUtils chatUtils, ConfigManager configManager, GameManager gameManager, BombManager bombManager, TimeManager timeManager) {
+    public LoadUtils(GoldenBomb plugin, ChatUtils chatUtils, ConfigManager configManager, GameManager gameManager, BombManager bombManager, TimerManager timerManager) {
         this.plugin = plugin;
         this.chatUtils = chatUtils;
         this.configManager = configManager;
         this.gameManager = gameManager;
         this.bombManager = bombManager;
-        this.timeManager = timeManager;
+        this.timerManager = timerManager;
     }
 
     public void loadFeatures() {
@@ -55,7 +55,7 @@ public class LoadUtils {
     }
     private void loadPlaceholderAPI() {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-            new GoldenBombExpansion(plugin, timeManager).register();
+            new GoldenBombExpansion(plugin, timerManager).register();
             plugin.getLogger().info("✅ PlaceholderAPI detected. PAPI dependency successfully loaded.");
         } else {
             plugin.getLogger().warning("⚠  PlaceholderAPI not detected. PAPI placeholders will not work.");
@@ -63,13 +63,13 @@ public class LoadUtils {
     }
 
     private void registerListeners() {
-        Bukkit.getServer().getPluginManager().registerEvents(new PlayerListener(gameManager, bombManager, plugin), plugin);
+        Bukkit.getServer().getPluginManager().registerEvents(new PlayerListener(gameManager, bombManager), plugin);
         Bukkit.getServer().getPluginManager().registerEvents(new TimerListener(gameManager), plugin);
     }
 
     private void updateTimersTask() {
         Bukkit.getScheduler().runTaskTimer(plugin, task -> {
-            timeManager.updateTimers();
+            timerManager.updateTimers();
         }, 0L, 20L);
     }
 }
