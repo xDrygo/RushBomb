@@ -28,7 +28,7 @@ public class GoldenBomb extends JavaPlugin {
         BombManager bombManager = new BombManager(this, itemManager);
         this.runnableManager = new RunnableManager(this, bombManager);
         ConfigManager configManager = new ConfigManager(this);
-        TimeManager timeManager = new TimeManager();
+        TimeManager timeManager = new TimeManager(this);
         this.gameManager = new GameManager(bombManager, runnableManager, timeManager, this, configManager);
         ChatUtils chatUtils = new ChatUtils(configManager, this);
         LoadUtils loadUtils = new LoadUtils(this, chatUtils, configManager, gameManager, bombManager, timeManager);
