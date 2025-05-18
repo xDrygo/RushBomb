@@ -71,33 +71,71 @@ public class GoldenBombCommand implements CommandExecutor {
                 }
                 sender.sendMessage(chatUtils.getMessage("command.status.success", null).replace("%status%", status));
             }
-            case "givebombs" -> {
+            case "randombomb" -> {
                 if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
-                    sender.sendMessage(chatUtils.getMessage("command.givebombs.game_stopped", null));
+                    sender.sendMessage(chatUtils.getMessage("command.randombomb.game_stopped", null));
                     return false;
                 }
 
                 if (args.length < 2) {
-                    sender.sendMessage(chatUtils.getMessage("command.givebombs.no_args", null));
+                    sender.sendMessage(chatUtils.getMessage("command.randombomb.no_args", null));
                     return false;
                 }
 
                 String playersIntStr = args[1];
 
                 if (!OtherUtils.validInt(playersIntStr)) {
-                    sender.sendMessage(chatUtils.getMessage("command.givebombs.invalid_int", null));
+                    sender.sendMessage(chatUtils.getMessage("command.randombomb.invalid_int", null));
                     return false;
                 }
 
                 int playersInt = Integer.parseInt(playersIntStr);
 
                 if (playersInt > Bukkit.getOnlinePlayers().size()) {
-                    sender.sendMessage(chatUtils.getMessage("command.givebombs.int_is_more_than_players", null));
+                    sender.sendMessage(chatUtils.getMessage("command.randombomb.int_is_more_than_players", null));
                     return false;
                 }
 
                 bombManager.giveRandomBombs(playersInt);
-                sender.sendMessage(chatUtils.getMessage("command.givebombs.success", null).replace("%int%", playersIntStr));
+                sender.sendMessage(chatUtils.getMessage("command.randombomb.success", null).replace("%int%", playersIntStr));
+            }
+            case "givebomb" -> {
+                if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.game_stopped", null));
+                    return false;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.no_args", null));
+                    return false;
+                }
+                String targetName = args[1];
+                Player target = Bukkit.getPlayerExact(targetName);
+
+                if (target == null) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.player_not_found", null));
+                    return false;
+                }
+                bombManager.addBomb(target);
+                sender.sendMessage(chatUtils.getMessage("command.adminbomb.give", null).replace("%target%", target.getName()));
+            }
+            case "takebomb" -> {
+                if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.game_stopped", null));
+                    return false;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.no_args", null));
+                    return false;
+                }
+                String targetName = args[1];
+                Player target = Bukkit.getPlayerExact(targetName);
+
+                if (target == null) {
+                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.player_not_found", null).replace("%arg%", targetName));
+                    return false;
+                }
+                bombManager.takeBomb(target);
+                sender.sendMessage(chatUtils.getMessage("command.adminbomb.take", null).replace("%target%", target.getName()));
             }
             case "resetall" -> {
                 gameManager.resetAll();

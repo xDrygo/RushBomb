@@ -6,12 +6,18 @@ command:
   stop:
     already: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
     success: "%prefix% #ff7272❌ Successfully stopped the GoldenBomb game."
-  givebombs:
+  randombomb:
     game_stopped: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
     no_args: "%prefix% #FF0000🚫 No value specified."
     invalid_int: "%prefix% #FF0000🚫 Invalid value."
     int_is_more_than_players: "%prefix% #FF0000🚫 Value is bigger than online players."
     success: "%prefix% #a0ff72✔ Successfully gived GoldenBomb to %int% players."
+  adminbomb:
+    game_stopped: "%prefix% #FF0000🚫 The GoldenBomb game is not running."
+    no_args: "%prefix% #FF0000🚫 No player specified."
+    player_not_found: "%prefix% #FF0000🚫 Can't find player %arg%."
+    take: "%prefix% #ff7272❌ Successfully taken player %target%'s GoldenBomb."
+    give: "%prefix% #a0ff72✔ Successfully given the GoldenBomb to player %target%"
   resetall:
     success: "%prefix% #a0ff72✔ Successfully reset all GoldenBomb game."
   status:
@@ -25,6 +31,9 @@ command:
     - ""
     - "#fff18d/gb start"
     - "#fff18d/gb stop"
+    - "#fff18d/gb randombomb <number>"
+    - "#fff18d/gb givebomb <player>"
+    - "#fff18d/gb takebomb <player>"
     - "#fff18d/gb reload"
     - "#fff18d/gb status"
     - "#fff18d/gb help"
