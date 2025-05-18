@@ -1,4 +1,4 @@
-package org.eldrygo.GoldenBomb.Utils;
+package org.eldrygo.GoldenBomb.Plugin.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.Team;
@@ -13,7 +13,7 @@ public class OtherUtils {
     }
 
     public static Team getBombTeam() {
-        String teamName = plugin.getConfig().getString("settings.bomb_team");
+        String teamName = plugin.getConfig().getString("settings.team");
 
         if (teamName == null) {
             teamName = "GoldenBomb";
