@@ -51,7 +51,7 @@ public class HUDManager {
             }
         };
 
-        task.runTaskTimer(plugin, 20L, 40L); // cada 2 segundos
+        task.runTaskTimer(plugin, 10L, 20L);
     }
     public void stopHUDTask() {
         if (task != null) {
