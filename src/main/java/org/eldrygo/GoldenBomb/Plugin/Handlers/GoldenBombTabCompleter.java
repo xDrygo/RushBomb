@@ -1,4 +1,4 @@
-package org.eldrygo.GoldenBomb.Handlers;
+package org.eldrygo.GoldenBomb.Plugin.Handlers;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

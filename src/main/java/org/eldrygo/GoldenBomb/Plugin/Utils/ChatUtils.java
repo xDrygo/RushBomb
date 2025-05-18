@@ -1,9 +1,9 @@
-package org.eldrygo.GoldenBomb.Utils;
+package org.eldrygo.GoldenBomb.Plugin.Utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Managers.ConfigManager;
+import org.eldrygo.GoldenBomb.Plugin.Managers.ConfigManager;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

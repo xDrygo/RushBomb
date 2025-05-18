@@ -1,9 +1,9 @@
-package org.eldrygo.GoldenBomb.Managers;
+package org.eldrygo.GoldenBomb.Plugin.Managers;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Utils.ChatUtils;
+import org.eldrygo.GoldenBomb.Plugin.Utils.ChatUtils;
 
 import java.io.File;
 

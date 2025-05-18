@@ -1,4 +1,4 @@
-package org.eldrygo.GoldenBomb.Utils;
+package org.eldrygo.GoldenBomb.Plugin.Utils;
 
 import org.bukkit.Bukkit;
 import org.eldrygo.GoldenBomb.GoldenBomb;

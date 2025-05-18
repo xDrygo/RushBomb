@@ -1,4 +1,4 @@
-package org.eldrygo.GoldenBomb.Handlers;
+package org.eldrygo.GoldenBomb.Plugin.Handlers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -7,10 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
-import org.eldrygo.GoldenBomb.Managers.ConfigManager;
-import org.eldrygo.GoldenBomb.Utils.ChatUtils;
-import org.eldrygo.GoldenBomb.Utils.LoadUtils;
-import org.eldrygo.GoldenBomb.Utils.OtherUtils;
+import org.eldrygo.GoldenBomb.Plugin.Managers.ConfigManager;
+import org.eldrygo.GoldenBomb.Plugin.Utils.ChatUtils;
+import org.eldrygo.GoldenBomb.Plugin.Utils.LoadUtils;
+import org.eldrygo.GoldenBomb.Plugin.Utils.OtherUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

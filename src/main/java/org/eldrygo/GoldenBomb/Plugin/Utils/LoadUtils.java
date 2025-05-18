@@ -1,13 +1,13 @@
-package org.eldrygo.GoldenBomb.Utils;
+package org.eldrygo.GoldenBomb.Plugin.Utils;
 
 import org.bukkit.Bukkit;
 import org.eldrygo.GoldenBomb.Game.Listener.PlayerListener;
 import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
 import org.eldrygo.GoldenBomb.GoldenBomb;
-import org.eldrygo.GoldenBomb.Handlers.GoldenBombCommand;
-import org.eldrygo.GoldenBomb.Handlers.GoldenBombTabCompleter;
-import org.eldrygo.GoldenBomb.Managers.ConfigManager;
+import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombCommand;
+import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombTabCompleter;
+import org.eldrygo.GoldenBomb.Plugin.Managers.ConfigManager;
 
 public class LoadUtils {
     private final GoldenBomb plugin;
