@@ -14,6 +14,7 @@ public class TimerListener implements Listener {
 
     @EventHandler
     public void onTimerEnd(TimerEndEvent event) {
+        if (gameManager.getCurrentState() != GameManager.GameState.STOPPED) return;
         gameManager.stopGame();
     }
 }
