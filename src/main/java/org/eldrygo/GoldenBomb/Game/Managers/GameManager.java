@@ -54,6 +54,7 @@ public class GameManager {
         killLosers();
         timeManager.stopTimer("game");
         XBossBarAPI.removeBossBar("goldenbomb");
+        bombManager.resetBombs();
     }
 
     public GameState getCurrentState() {
