@@ -14,9 +14,11 @@ public class BombManager {
 
     private Team bombTeam;
     private final GoldenBomb plugin;
+    private final ItemManager itemManager;
 
-    public BombManager(GoldenBomb plugin) {
+    public BombManager(GoldenBomb plugin, ItemManager itemManager) {
         this.plugin = plugin;
+        this.itemManager = itemManager;
         this.bombTeam = null;
     }
 
@@ -25,6 +27,7 @@ public class BombManager {
             playersWithBomb.add(player);
             bombTeam.addEntity(player);
             player.setGlowing(true);
+            itemManager.setBombHead(player);
         }
     }
 
@@ -33,15 +36,18 @@ public class BombManager {
             playersWithBomb.remove(player);
             bombTeam.removeEntity(player);
             player.setGlowing(false);
+            itemManager.removeBombHead(player);
         }
     }
 
     public void resetBombs() {
+        for (Player p : playersWithBomb) {
+            itemManager.removeBombHead(p);
+            p.setGlowing(false);
+        }
         playersWithBomb.clear();
         for (String entry : new HashSet<>(bombTeam.getEntries())) {
             bombTeam.removeEntry(entry);
-            Objects.requireNonNull(
-                    Bukkit.getEntity(Bukkit.getPlayer(entry).getUniqueId())).setGlowing(false);
         }
     }
 
