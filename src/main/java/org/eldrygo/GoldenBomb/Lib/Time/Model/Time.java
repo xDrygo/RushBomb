@@ -37,12 +37,7 @@ public class Time {
         long elapsedSeconds = (System.currentTimeMillis() - startTime) / 1000;
         long remaining = countdownTime - elapsedSeconds;
 
-        if (remaining <= 0) {
-            stop(); // Detener cuando llega a cero
-            return 0;
-        }
-
-        return remaining;
+        return Math.max(remaining, 0);
     }
 
     public String formatTime(long seconds) {

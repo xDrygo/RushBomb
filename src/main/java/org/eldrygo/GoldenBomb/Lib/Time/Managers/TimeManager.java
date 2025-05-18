@@ -1,5 +1,8 @@
 package org.eldrygo.GoldenBomb.Lib.Time.Managers;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.eldrygo.GoldenBomb.Lib.Time.Events.TimerEndEvent;
 import org.eldrygo.GoldenBomb.Lib.Time.Model.Time;
 
 import java.util.HashMap;
@@ -7,6 +10,11 @@ import java.util.Map;
 
 public class TimeManager {
     private final Map<String, Time> timers = new HashMap<>();
+    private final Plugin plugin;
+
+    public TimeManager(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
     public void createTimer(String id, long durationInSeconds) {
         if (timers.containsKey(id)) return;
@@ -49,5 +57,23 @@ public class TimeManager {
 
     public void clearAll() {
         timers.clear();
+    }
+
+    // Método que se debe llamar periódicamente para actualizar timers
+    public void updateTimers() {
+        timers.entrySet().removeIf(entry -> {
+            String id = entry.getKey();
+            Time time = entry.getValue();
+
+            if (time.getRemainingTime() <= 0) {
+                // Lanza el evento cuando termina el timer
+                Bukkit.getScheduler().runTask(plugin, () -> {
+                    Bukkit.getPluginManager().callEvent(new TimerEndEvent(id));
+                });
+
+                return true; // Remueve el timer
+            }
+            return false;
+        });
     }
 }

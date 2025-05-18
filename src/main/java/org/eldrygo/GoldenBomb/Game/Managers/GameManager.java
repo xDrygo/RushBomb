@@ -66,17 +66,10 @@ public class GameManager {
     }
 
     public void killLosers() {
-        List<Player> playersToKill = new ArrayList<>();
-
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.isOp()) return;
-            if (bombManager.getPlayersWithBomb().contains(p)) return;
-
-            playersToKill.add(p);
-        }
-
-        for (Player p : playersToKill) {
-            p.damage(100000.0);
+            if (!bombManager.getPlayersWithBomb().contains(p)) {
+                p.damage(100000.0);
+            }
         }
     }
 }

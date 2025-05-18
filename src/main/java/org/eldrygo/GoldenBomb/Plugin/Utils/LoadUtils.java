@@ -6,6 +6,7 @@ import org.eldrygo.GoldenBomb.Game.Listener.PlayerListener;
 import org.eldrygo.GoldenBomb.Game.Managers.BombManager;
 import org.eldrygo.GoldenBomb.Game.Managers.GameManager;
 import org.eldrygo.GoldenBomb.GoldenBomb;
+import org.eldrygo.GoldenBomb.Lib.Time.Listeners.TimerListener;
 import org.eldrygo.GoldenBomb.Lib.Time.Managers.TimeManager;
 import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombCommand;
 import org.eldrygo.GoldenBomb.Plugin.Handlers.GoldenBombTabCompleter;
@@ -33,6 +34,7 @@ public class LoadUtils {
         registerCommand();
         registerListeners();
         loadPlaceholderAPI();
+        updateTimersTask();
 
         bombManager.setBombTeam(OtherUtils.getBombTeam());
     }
@@ -62,5 +64,12 @@ public class LoadUtils {
 
     private void registerListeners() {
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerListener(gameManager, bombManager, plugin), plugin);
+        Bukkit.getServer().getPluginManager().registerEvents(new TimerListener(gameManager), plugin);
+    }
+
+    private void updateTimersTask() {
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            timeManager.updateTimers();
+        }, 0L, 20L);
     }
 }
