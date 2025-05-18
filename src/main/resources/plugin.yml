@@ -1,9 +1,18 @@
 name: PacTNTMan
 main: org.eldrygo.PacTNTMan.PacTNTMan
-version: 0.0.01
+version: 0.0.13
 api-version: 1.20
 authors:
   - Drygo
   - Turtle Club
 softdepend:
   - xBossBar
+  - PlaceholderAPI
+commands:
+  ptntm:
+    aliases:
+      - pactntman
+    description: "PacTNTMan plugin main command."
+permissions:
+  pactntman.admin:
+    default: op

@@ -1,0 +1,75 @@
+prefix: "#ffaf1c&lP#ff1f1f&lT&r&f&lN#ff1f1f&lT#ffaf1c&lM &8»&r"
+command:
+  start:
+    already: "%prefix% #FF0000🚫 The PacTNTMan game is already running."
+    no_pacman: "%prefix% #FF0000🚫 There is no pac-man registered."
+    insufficient_players: "%prefix% #FF0000🚫 Game players are insufficient."
+    success: "%prefix% #a0ff72✔ Successfully started the PacTNTMan game."
+  stop:
+    already: "%prefix% #FF0000🚫 The PacTNTMan game is not running."
+    success: "%prefix% #ff7272❌ Successfully stopped the PacTNTMan game."
+  status:
+    success: "%prefix% #fff18d📰 The PacTNTMan game is &l%status%"
+  adminbomb:
+    game_stopped: "%prefix% #FF0000🚫 The PacTNTMan game is not running."
+    no_args: "%prefix% #FF0000🚫 No player specified."
+    player_not_found: "%prefix% #FF0000🚫 Can't find player %arg%."
+    take: "%prefix% #ff7272❌ Successfully taken player %target%'s Bomb."
+    give: "%prefix% #a0ff72✔ Successfully given the Bomb to player %target%"
+  players:
+    clear:
+      success: "%prefix% #a0ff72✔ Successfully cleared PacTNTMan game players."
+    sync:
+      success: "%prefix% #a0ff72✔ Successfully synced %int% PacTNTMan game players."
+    help:
+      - ""
+      - "&f&lᴘᴀᴄᴛɴᴛᴍᴀɴ ᴘʟᴀʏᴇʀꜱ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+      - ""
+      - "#fff18d/ptntm players sync"
+      - "#fff18d/ptntm players clear"
+      - "#fff18d/ptntm players help"
+      - ""
+    usage: "%prefix% #FF0000🚫 Unknown Sub-Command. &7Use &f/ptntm players help &7to get the command list."
+  pacman:
+    clear:
+      success: "%prefix% #a0ff72✔ Successfully cleared the pac-man."
+    set:
+      no_arg: "%prefix% #FF0000🚫 Player not specified."
+      player_not_found: "%prefix% #FF0000🚫 Can't find player %arg%."
+      already: "%prefix% #FF0000🚫 Player %arg% is already the pac-man."
+      success: "%prefix% #a0ff72✔ Successfully set player %target% as the pac-man."
+    help:
+      - ""
+      - "&f&lᴘᴀᴄᴛɴᴛᴍᴀɴ ᴘᴀᴄᴍᴀɴ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+      - ""
+      - "#fff18d/ptntm pacman set <player>"
+      - "#fff18d/ptntm pacman clear"
+      - "#fff18d/ptntm pacman help"
+      - ""
+    usage: "%prefix% #FF0000🚫 Unknown Sub-Command. &7Use &f/ptntm pacman help &7to get the command list."
+  reload:
+    error: "%prefix% #FF0000🚫 Error reloading the plugin."
+    success: "%prefix% #a0ff72✔ Plugin reloaded."
+  help:
+    - ""
+    - "&f&lᴘᴀᴄᴛɴᴛᴍᴀɴ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+    - ""
+    - "#fff18d/ptntm start"
+    - "#fff18d/ptntm stop"
+    - "#fff18d/ptntm givebomb <player>"
+    - "#fff18d/ptntm takebomb <player>"
+    - "#fff18d/ptntm reload"
+    - "#fff18d/ptntm status"
+    - "#fff18d/ptntm help"
+    - ""
+  usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/ptntm help &7to get the command list."
+bossbar:
+  game: "%pactntman_timer%"
+  bombtimer: "#ff1b51Tiempo de tu &lBomba&r#ff1b51: &r#ff7a9a%time%"
+actionbar:
+  with_bomb: "&r&fऑ"
+  without_bomb: "&r&fऒ"
+error:
+  no_permission: "%prefix% #FF0000🚫 You don't have permission to use this command."
+
+# #FF0000🚫 #ff7272❌ #fff18d📰 #a0ff72✔

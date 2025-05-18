@@ -1,0 +1,11 @@
+settings:
+  team: "pacBombTeam"
+  pacman_team: "pacManTeam"
+  item:
+    name: "#ff1b51&lBomba de Tiempo"
+    lore:
+      - "#ff7a9aPasa esta bomba a otro jugador"
+      - "#ff7a9aantes de que se te acabe el tiempo."
+      - " "
+      - "#ffc02a&lGolpea a otro jugador para pasarla."
+  game_duration: 60 #In seconds
