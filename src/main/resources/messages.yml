@@ -1,0 +1,50 @@
+prefix: "#499deb&lr&r&f&lTNTTag &8»&r"
+command:
+  start:
+    already: "%prefix% #FF0000🚫 The rTNTTag game is already running."
+    success: "%prefix% #a0ff72✔ Successfully started the rTNTTag game."
+  stop:
+    already: "%prefix% #FF0000🚫 The rTNTTag game is not running."
+    success: "%prefix% #ff7272❌ Successfully stopped the rTNTTag game."
+  randombomb:
+    game_stopped: "%prefix% #FF0000🚫 The rTNTTag game is not running."
+    no_args: "%prefix% #FF0000🚫 No value specified."
+    invalid_int: "%prefix% #FF0000🚫 Invalid value."
+    int_is_more_than_players: "%prefix% #FF0000🚫 Value is bigger than online players."
+    success: "%prefix% #a0ff72✔ Successfully gived TNT to %int% players."
+  adminbomb:
+    game_stopped: "%prefix% #FF0000🚫 The rTNTTag game is not running."
+    no_args: "%prefix% #FF0000🚫 No player specified."
+    player_not_found: "%prefix% #FF0000🚫 Can't find player %arg%."
+    take: "%prefix% #ff7272❌ Successfully taken player %target%'s TNT."
+    give: "%prefix% #a0ff72✔ Successfully given the TNT to player %target%"
+  resetall:
+    success: "%prefix% #a0ff72✔ Successfully reset all rTNTTag game."
+  status:
+    success: "%prefix% #fff18d📰 The rTNTTag game is &l%status%"
+  reload:
+    error: "%prefix% #FF0000🚫 Error reloading the plugin."
+    success: "%prefix% #a0ff72✔ Plugin reloaded."
+  help:
+    - ""
+    - "&f&lʀᴛɴᴛᴛᴀɢ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+    - ""
+    - "#fff18d/rtnttag start"
+    - "#fff18d/rtnttag stop"
+    - "#fff18d/rtnttag randombomb <number>"
+    - "#fff18d/rtnttag givebomb <player>"
+    - "#fff18d/rtnttag takebomb <player>"
+    - "#fff18d/rtnttag reload"
+    - "#fff18d/rtnttag status"
+    - "#fff18d/rtnttag help"
+    - ""
+  usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/rtnttag help &7to get the command list."
+bossbar:
+  game: "%rtnttag_timer%"
+actionbar:
+  with_bomb: "ऑ"
+  without_bomb: "ऒ"
+error:
+  no_permission: "%prefix% #FF0000🚫 You don't have permission to use this command."
+
+# #FF0000🚫 #ff7272❌ #fff18d📰 #a0ff72✔

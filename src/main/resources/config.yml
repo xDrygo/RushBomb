@@ -1,0 +1,10 @@
+settings:
+  team: "rTNTTeam"
+  item:
+    name: "#4693db&lBomba"
+    lore:
+      - "#93c5f5Golpea a otro jugador para"
+      - "#93c5f5pasar esta bomba antes de que acabe"
+      - "#93c5f5el tiempo, de lo contrario, perderás."
+    custom_model_data: 104
+  game_duration: 60 #In seconds
