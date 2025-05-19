@@ -1,0 +1,19 @@
+name: KothTNT
+main: org.eldrygo.KothTNT.KothTNT
+version: 0.0.03
+api-version: 1.20
+authors:
+  - Drygo
+  - Turtle Club
+softdepend:
+  - PlaceholderAPI
+  - xBossBar
+commands:
+  kothtnt:
+    aliases:
+      - ktnt
+    description: "Main KothTNT plugin command."
+permissions:
+  kothtnt.admin:
+    description: "KothTNT plugin administration permission."
+    default: false

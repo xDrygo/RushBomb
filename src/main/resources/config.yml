@@ -1,0 +1,11 @@
+settings:
+  team: "kothTeam"
+  item:
+    name: "#ff38a4&lBomba Capturada"
+    lore:
+      - "#ff8fccMantén esta bomba en tu inventario"
+      - "#ff8fccpara obtener puntos, ten cuidado con"
+      - "#ff8fcclos demás jugadores porque podrían"
+      - "#ff8fccquitartela."
+    custom_model_data: 105
+  game_duration: 60 #In seconds

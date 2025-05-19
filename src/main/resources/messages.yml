@@ -1,0 +1,83 @@
+prefix: "#ff38a4&lKoth&r&lTNT &8»&r"
+command:
+  start:
+    already: "%prefix% #FF0000🚫 The KothTNT game is already running."
+    no_args: "%prefix% #FF0000🚫 Please specify the number of players to kill in this game."
+    invalid_int: "%prefix% #FF0000🚫 Invalid value."
+    success: "%prefix% #a0ff72✔ Successfully started the KothTNT game."
+  stop:
+    already: "%prefix% #FF0000🚫 The KothTNT game is not running."
+    success: "%prefix% #ff7272❌ Successfully stopped the KothTNT game."
+  randombomb:
+    game_stopped: "%prefix% #FF0000🚫 The KothTNT game is not running."
+    no_args: "%prefix% #FF0000🚫 No value specified."
+    invalid_int: "%prefix% #FF0000🚫 Invalid value."
+    int_is_more_than_players: "%prefix% #FF0000🚫 Value is bigger than online players."
+    success: "%prefix% #a0ff72✔ Successfully given KothTNT to %int% players."
+  adminbomb:
+    game_stopped: "%prefix% #FF0000🚫 The KothTNT game is not running."
+    no_args: "%prefix% #FF0000🚫 No player specified."
+    player_not_found: "%prefix% #FF0000🚫 Can't find player %arg%."
+    take: "%prefix% #ff7272❌ Successfully taken player %target%'s KothTNT."
+    give: "%prefix% #a0ff72✔ Successfully given the KothTNT to player %target%"
+  resetall:
+    success: "%prefix% #a0ff72✔ Successfully reset all KothTNT game."
+  status:
+    success: "%prefix% #fff18d📰 The KothTNT game is &l%status%"
+  points:
+    usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/ktnt points help &7to get the command list."
+    add:
+      usage: "%prefix% #FF0000🚫 Incorrect Usage. &7Use &f/ktnt points add <player> <amount>"
+      success: "%prefix% #a0ff72✔ Successfully added %points% points to player %p%."  # %p%, %points%
+    remove:
+      usage: "%prefix% #FF0000🚫 Incorrect Usage. &7Use &f/ktnt points remove <player> <amount>"
+      success: "%prefix% #a0ff72✔ Successfully subtracted %points% points from player %p%."
+    set:
+      usage: "%prefix% #FF0000🚫 Incorrect Usage. &7Use &f/ktnt points set <player> <amount>"
+      success: "%prefix% #a0ff72✔ Successfully set player %p% points to %points%"
+    get:
+      usage: "%prefix% #FF0000🚫 Incorrect Usage. &7Use &f/ktnt points get <player>"
+      success: "%prefix% #fff18d📰 Current player %p%'s points: %points%"  # %p%, %points%
+    reset:
+      success: "%prefix% #a0ff72✔ Successfully reset all player points."
+    help:
+      - ""
+      - "&f&lᴋᴏᴛʜᴛɴᴛ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+      - ""
+      - "#fff18d/ktnt points add <player> <amount>"
+      - "#fff18d/ktnt points remove <player> <amount>"
+      - "#fff18d/ktnt points set <player> <amount>"
+      - "#fff18d/ktnt points get <player>"
+      - "#fff18d/ktnt points resetall"
+      - "#fff18d/ktnt points help"
+      - ""
+    invalid_player: ""  # %player%
+    invalid_number: ""
+  reload:
+    error: "%prefix% #FF0000🚫 Error reloading the plugin."
+    success: "%prefix% #a0ff72✔ Plugin reloaded."
+  help:
+    - ""
+    - "&f&lᴋᴏᴛʜᴛɴᴛ ᴄᴏᴍᴍᴀɴᴅ ᴜꜱᴀɢᴇꜱ:"
+    - ""
+    - "#fff18d/ktnt start"
+    - "#fff18d/ktnt stop"
+    - "#fff18d/ktnt randombomb <number>"
+    - "#fff18d/ktnt givebomb <player>"
+    - "#fff18d/ktnt takebomb <player>"
+    - "#fff18d/ktnt points <sub command>"
+    - "#fff18d/ktnt reload"
+    - "#fff18d/ktnt status"
+    - "#fff18d/ktnt help"
+    - ""
+  usage: "%prefix% #FF0000🚫 Unknown Command. &7Use &f/ktnt help &7to get the command list."
+bossbar:
+  game: "%kothtnt_timer%"
+  points: "#ff38a4&lPuntos acumulados&r#ff38a4: &r#ff8fcc%points%"
+actionbar:
+  with_bomb: "ओ"
+  without_bomb: "औ"
+error:
+  no_permission: "%prefix% #FF0000🚫 You don't have permission to use this command."
+
+# #FF0000🚫 #ff7272❌ #fff18d📰 #a0ff72✔
