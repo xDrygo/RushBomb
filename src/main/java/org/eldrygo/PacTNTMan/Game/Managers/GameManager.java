@@ -57,6 +57,7 @@ public class GameManager {
         currentState = GameState.STOPPED;
         runnableManager.stopTask();
         timerManager.stopTimer("game");
+        timerManager.removeTimer("game");
         XBossBarAPI.removeBossBar("pactntman_bombtimer");
         XBossBarAPI.removeBossBar("pactntman");
         XBossBarAPI.removeBossBar("void");
@@ -66,6 +67,8 @@ public class GameManager {
             if (p.isGlowing()) {
                 p.setGlowing(false);
             }
+            timerManager.stopTimer(p.getName());
+            timerManager.removeTimer(p.getName());
         }
     }
 
