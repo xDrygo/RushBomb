@@ -44,6 +44,7 @@ public class BombManager {
             itemManager.removeBombHead(player);
             if (timerManager.isRunning(player.getName())) {
                 timerManager.stopTimer(player.getName());
+                timerManager.removeTimer(player.getName());
             }
         }
     }
@@ -73,5 +74,7 @@ public class BombManager {
     public void bombExplode(Player p) {
         plugin.getLogger().warning("Player " + p.getName() + " exploded.");
         p.damage(100000.0);
+        timerManager.stopTimer(p.getName());
+        timerManager.removeTimer(p.getName());
     }
 }
