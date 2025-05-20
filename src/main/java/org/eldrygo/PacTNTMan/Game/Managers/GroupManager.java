@@ -47,7 +47,7 @@ public class GroupManager {
         clearPacMan();
         pacMan = p;
         if (!OtherUtils.getPacManTeam().getEntries().contains(p.getName())) {
-            OtherUtils.getPacManTeam().addEntity(p);
+            OtherUtils.getPacManTeam().addEntry(p.getName());
         }
     }
     public Player getPacMan() {
