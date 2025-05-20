@@ -24,7 +24,7 @@ public class BombManager {
     public void addBomb(Player player) {
         if (!playersWithBomb.contains(player)) {
             playersWithBomb.add(player);
-            bombTeam.addEntity(player);
+            bombTeam.addEntry(player.getName());
             player.setGlowing(true);
             itemManager.setBombHead(player);
         }
@@ -33,7 +33,7 @@ public class BombManager {
     public void takeBomb(Player player) {
         if (playersWithBomb.contains(player)) {
             playersWithBomb.remove(player);
-            bombTeam.removeEntity(player);
+            bombTeam.removeEntry(player.getName());
             player.setGlowing(false);
             itemManager.removeBombHead(player);
         }

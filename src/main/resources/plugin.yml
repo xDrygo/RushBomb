@@ -1,6 +1,6 @@
 name: rTNTTag
 main: org.eldrygo.RTNTTag.RTNTTag
-version: 0.0.03
+version: 0.0.04
 api-version: 1.20
 authors:
   - Drygo
