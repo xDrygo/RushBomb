@@ -1,7 +1,9 @@
 package org.eldrygo.KothTNT.Lib.Points.Managers;
 
 import org.bukkit.entity.Player;
+import org.eldrygo.KothTNT.Plugin.Utils.OtherUtils;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +42,9 @@ public class PointsManager {
     }
 
     public List<Player> getLowestPlayers(int amount) {
-        return points.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue())
+        return OtherUtils.getGamePlayers().stream()
+                .sorted(Comparator.comparingInt(this::getPoints))
                 .limit(amount)
-                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 }

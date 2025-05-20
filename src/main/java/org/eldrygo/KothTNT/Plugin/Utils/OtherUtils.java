@@ -1,8 +1,12 @@
 package org.eldrygo.KothTNT.Plugin.Utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 import org.eldrygo.KothTNT.KothTNT;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OtherUtils {
     private static KothTNT plugin;
@@ -36,6 +40,18 @@ public class OtherUtils {
             return false;
         }
     }
+
+    public static List<Player> getGamePlayers() {
+        List<Player> players = new ArrayList<>();
+
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.isOp()) continue;
+            players.add(p);
+        }
+
+        return players;
+    }
+
     public static void setPlugin(KothTNT plugin) {
         OtherUtils.plugin = plugin;
     }
