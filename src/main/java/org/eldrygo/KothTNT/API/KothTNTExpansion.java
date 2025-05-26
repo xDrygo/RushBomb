@@ -48,6 +48,16 @@ public class KothTNTExpansion extends PlaceholderExpansion {
             return configManager.getMessageConfig().getString("bossbar.points")
                     .replace("%points%", String.valueOf(pointsManager.getPoints(player.getPlayer())));
         }
+        if (params.startsWith("points_lb_")) {
+            String positionStr = params.replace("points_lb_", "");
+            try {
+                int position = Integer.parseInt(positionStr);
+                String playerName = pointsManager.getLowestPlayerNameAtPosition(position);
+                return (playerName != null) ? playerName : "N/A";
+            } catch (NumberFormatException e) {
+                return "N/A";
+            }
+        }
         return null;
     }
 }

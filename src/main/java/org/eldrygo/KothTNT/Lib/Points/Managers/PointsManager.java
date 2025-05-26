@@ -47,4 +47,15 @@ public class PointsManager {
                 .limit(amount)
                 .collect(Collectors.toList());
     }
+    public String getLowestPlayerNameAtPosition(int position) {
+        if (position <= 0) return null;
+
+        List<Player> sorted = OtherUtils.getGamePlayers().stream()
+                .sorted(Comparator.comparingInt(this::getPoints))
+                .collect(Collectors.toList());
+
+        if (position > sorted.size()) return null;
+
+        return sorted.get(position - 1).getName();
+    }
 }
