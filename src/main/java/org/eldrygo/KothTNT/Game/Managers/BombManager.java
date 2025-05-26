@@ -59,6 +59,7 @@ public class BombManager {
         List<Player> selectedPlayers = onlinePlayers.stream().limit(playerInt).collect(Collectors.toList());
 
         for (Player player : selectedPlayers) {
+            if (player.isOp()) continue;
             addBomb(player);
             plugin.getLogger().warning("Gived the GoldenBomb to " + player.getName() + "with giveRandomBombs method.");
         }
