@@ -24,8 +24,11 @@ public class HUDManager {
         this.gameManager = gameManager;
     }
 
+
     public void startHUDTask() {
         plugin.getLogger().info("HUD runnable started.");
+        String msgWithBomb = ChatUtils.formatColor(configManager.getMessageConfig().getString("actionbar.with_bomb"));
+        String msgWithoutBomb = ChatUtils.formatColor(configManager.getMessageConfig().getString("actionbar.without_bomb"));
         task = new BukkitRunnable() {
             @Override
             public void run() {
@@ -35,21 +38,21 @@ public class HUDManager {
                         String actionMessage;
 
                         if (bombManager.getPlayersWithBomb().contains(p)) {
-                            actionMessage = configManager.getMessageConfig().getString("actionbar.with_bomb");
+                            actionMessage = msgWithBomb;
                         } else {
-                            actionMessage = configManager.getMessageConfig().getString("actionbar.without_bomb");
+                            actionMessage = msgWithoutBomb;
                         }
 
                         p.spigot().sendMessage(
                                 ChatMessageType.ACTION_BAR,
-                                new TextComponent(ChatUtils.formatColor(actionMessage))
+                                new TextComponent(actionMessage)
                         );
                     }
                 }
             }
         };
 
-        task.runTaskTimer(plugin, 10L, 20L); // cada 2 segundos
+        task.runTaskTimer(plugin, 1L, 1L);
     }
     public void stopHUDTask() {
         if (task != null) {
