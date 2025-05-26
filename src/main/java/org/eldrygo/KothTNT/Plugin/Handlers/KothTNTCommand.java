@@ -89,11 +89,6 @@ public class KothTNTCommand implements CommandExecutor {
                 sender.sendMessage(chatUtils.getMessage("command.status.success", null).replace("%status%", status));
             }
             case "randombomb" -> {
-                if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
-                    sender.sendMessage(chatUtils.getMessage("command.randombomb.game_stopped", null));
-                    return false;
-                }
-
                 if (args.length < 2) {
                     sender.sendMessage(chatUtils.getMessage("command.randombomb.no_args", null));
                     return false;
@@ -117,10 +112,6 @@ public class KothTNTCommand implements CommandExecutor {
                 sender.sendMessage(chatUtils.getMessage("command.randombomb.success", null).replace("%int%", playersIntStr));
             }
             case "givebomb" -> {
-                if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
-                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.game_stopped", null));
-                    return false;
-                }
                 if (args.length < 2) {
                     sender.sendMessage(chatUtils.getMessage("command.adminbomb.no_args", null));
                     return false;
@@ -136,10 +127,6 @@ public class KothTNTCommand implements CommandExecutor {
                 sender.sendMessage(chatUtils.getMessage("command.adminbomb.give", null).replace("%target%", target.getName()));
             }
             case "takebomb" -> {
-                if (gameManager.getCurrentState() == GameManager.GameState.STOPPED) {
-                    sender.sendMessage(chatUtils.getMessage("command.adminbomb.game_stopped", null));
-                    return false;
-                }
                 if (args.length < 2) {
                     sender.sendMessage(chatUtils.getMessage("command.adminbomb.no_args", null));
                     return false;
