@@ -6,6 +6,9 @@ command:
   stop:
     already: "%prefix% #FF0000🚫 The rTNTTag game is not running."
     success: "%prefix% #ff7272❌ Successfully stopped the rTNTTag game."
+  finish:
+    already: "%prefix% #FF0000🚫 The rTNTTag game is not running."
+    success: "%prefix% #ff7272❌ Successfully finished the rTNTTag game."
   randombomb:
     game_stopped: "%prefix% #FF0000🚫 The rTNTTag game is not running."
     no_args: "%prefix% #FF0000🚫 No value specified."

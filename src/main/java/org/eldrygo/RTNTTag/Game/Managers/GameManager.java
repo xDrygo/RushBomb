@@ -62,6 +62,17 @@ public class GameManager {
         hudManager.stopHUDTask();
     }
 
+    public void cancelGame() {
+        currentState = GameState.STOPPED;
+        runnableManager.stopTask();
+        timerManager.stopTimer("game");
+        timerManager.removeTimer("game");
+        XBossBarAPI.removeBossBar("rtnttag");
+        XBossBarAPI.removeBossBar("void");
+        bombManager.resetBombs();
+        hudManager.stopHUDTask();
+    }
+
     public GameState getCurrentState() {
         return currentState;
     }
