@@ -3,7 +3,7 @@
 ## Introduction 📋
 **RushBomb** is a **Minecraft event** that explores various mechanics based on the classic **TNT Tag**, brought to you by **Turtle Club** — an event in which I participated by developing games such as **GoldenBomb**, **PacTNTMan**, and **TNT Tag**.
 
-## Special Thanks  
+## Special Thanks 🙏
 > Huge thanks to **Turtle Club** for letting me be part of this event.  
 > Special thanks as well to **Jose90** and **ZephyHosting** for sponsoring it.  
 > And of course, thank you to **all the participants** for joining and making it awesome!  
